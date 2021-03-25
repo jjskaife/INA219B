@@ -151,7 +151,7 @@ float INA219B::getCurrent_mA()
 	{
 		// risk of device reset during sharp load, re-apply the calibration by precaution
 		writeRegister(INA219_CALIBRATION_REG, calibrationRegister);
-		uint16_t currentRegValue = readRegister(INA219_CURRENT_REG);
+		int16_t currentRegValue = readRegister(INA219_CURRENT_REG);
 		if (currentRegValue != 0)
 		{
 			if (RShunt <= 0) return 0.0;
@@ -169,7 +169,7 @@ float INA219B::getPower_mW()
 		// risk of device reset during sharp load, re-apply the calibration by precaution
 		writeRegister(INA219_CALIBRATION_REG, calibrationRegister);
 
-		uint16_t currentRegValue = readRegister(INA219_POWER_REG);
+		int16_t currentRegValue = readRegister(INA219_POWER_REG);
 		if (currentRegValue != 0)
 		{
 			if (RShunt <= 0) return 0.0;
